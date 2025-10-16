@@ -13,7 +13,14 @@ class Board:
         self.setup_tiles()
         self.setup_pieces()
 
+    def updatePos(self,oldx,oldy,newx,newy):
+        if (oldx == newx and newy == oldy):
+            return
+        self.board[newx][newy] = self.board[oldx][oldy]
+        self.board[oldx][oldy] = None
 
+    def getBoard(self):
+        return self.board
     def setup_tiles(self):
        pasta_path = Path("./assets/images/tiles/")
        for arquivo in pasta_path.glob("*.svg"):
